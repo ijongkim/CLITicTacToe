@@ -54,12 +54,9 @@ Board.prototype.checkRow = function (row) {
   }
   for (var i = 0; i < 3; i++) {
     var piece = this._board[row][i]
-    console.log(piece)
-    console.log(counts[piece])
-    if (counts[piece]) {
+    if (counts[piece] >= 0) {
       counts[piece] += 1
     }
-    console.log(counts[piece])
   }
   console.log('Checking Row', row, counts)
   if (counts.X === 3) {
@@ -78,7 +75,7 @@ Board.prototype.checkCol = function (col) {
   }
   for (var i = 0; i < 3; i++) {
     var piece = this._board[col][i]
-    if (counts[piece]) {
+    if (counts[piece] >= 0) {
       counts[piece]++
     }
   }
@@ -98,7 +95,7 @@ Board.prototype.checkDiags = function () {
   }
   for (var i = 0; i < 3; i++) {
     var piece = this._board[i][i]
-    if (counts[piece]) {
+    if (counts[piece] >= 0) {
       counts[piece]++
     }
   }
@@ -118,7 +115,7 @@ Board.prototype.checkDiags = function () {
     if (counts[piece]) {
       counts[piece]++
     }
-    j--;
+    j--
   }
   if (counts.X === 3) {
     return [true, 'X']
